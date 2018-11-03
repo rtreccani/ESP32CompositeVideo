@@ -22,21 +22,21 @@ typedef struct
 }TechProperties;
 
 const TechProperties PALProperties = {
-  .lineMicros = 64,
-  .syncMicros = 4.7,
-  .blankEndMicros = 10.4,
+  .lineMicros = 57,
+  .syncMicros = 4,
+  .blankEndMicros = 5,
   .backMicros = 1.65,
   .shortVSyncMicros = 2.35,
   .overscanLeftMicros = 1.6875,
   .overscanRightMicros = 1.6875,
-  .syncVolts = -0.3,
-  .blankVolts = 0.0, 
-  .blackVolts =  0.005,//specs 0.0,
-  .whiteVolts = 0.7,
-  .lines = 625,
+  .syncVolts = 0,
+  .blankVolts = 0.1, 
+  .blackVolts =  0.2,//.005,//specs 0.0,
+  .whiteVolts = 0.8,
+  .lines = 400,
   .linesFirstTop = 23,
-  .linesOverscanTop = 9,
-  .linesOverscanBottom = 9,
+  .linesOverscanTop = 8,
+  .linesOverscanBottom = 8,
   .imageAspect = 4./3.
 };
 
@@ -254,6 +254,7 @@ class CompositeOutput
       char *pixels = (*frame)[y];
       fillLine(pixels);
       sendLine();
+      sendLine();
     }
     fillBlank();
     for(int y = 0; y < linesEvenBlankBottom; y++)
@@ -264,6 +265,14 @@ class CompositeOutput
     i = 0;
     fillShort(i); 
     //odd half frame
+    pinMode(13,OUTPUT);
+    digitalWrite(13, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(13,LOW);
+  }
+};
+/*
+    
     fillLong(i);
     sendLine(); 
     i = 0;
@@ -294,7 +303,11 @@ class CompositeOutput
     i = 0;
     fillShort(i); fillShort(i);
     sendLine(); sendLine();
+    
+    
+    digitalWrite(13, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(13,LOW);
   }
 };
-
-
+*/

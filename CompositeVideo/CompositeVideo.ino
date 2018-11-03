@@ -29,7 +29,7 @@ CompositeGraphics graphics(XRES, YRES, 1337);
 
 //Composite output using the desired mode (PAL/NTSC) and twice the resolution. 
 //It will center the displayed image automatically
-CompositeOutput composite(CompositeOutput::NTSC, XRES * 2, YRES * 2);
+CompositeOutput composite(CompositeOutput::PAL, XRES * 2, YRES * 2);
 
 #if defined(VENUS)
 Mesh<CompositeGraphics> model(venus::vertexCount, venus::vertices, 0, 0, venus::triangleCount, venus::triangles, venus::triangleNormals);
@@ -155,5 +155,3 @@ void loop()
 {
   draw();
 }
-
-

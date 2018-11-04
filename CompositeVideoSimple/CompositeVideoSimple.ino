@@ -16,7 +16,7 @@ const int YRES = 200;
 CompositeGraphics graphics(XRES, YRES);
 //Composite output using the desired mode (PAL/NTSC) and twice the resolution. 
 //It will center the displayed image automatically
-CompositeOutput composite(CompositeOutput::NTSC, XRES * 2, YRES * 2);
+CompositeOutput composite(CompositeOutput::PAL, XRES * 2, YRES * 2);
 
 //image and font from the included headers created by the converter. Each iamge uses its own namespace.
 Image<CompositeGraphics> luni0(luni::xres, luni::yres, luni::pixels);
@@ -97,5 +97,3 @@ void loop()
 {
   draw();
 }
-
-
